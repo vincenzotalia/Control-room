@@ -1,5 +1,6 @@
 # backend/agora_analysis.py
 import glob
+import sys
 from pathlib import Path
 from typing import Optional, Dict, Any, Tuple
 from datetime import datetime  # ✅ storico
@@ -74,7 +75,13 @@ _ANALYSIS_LOCK = threading.Lock()
 
 def _log(msg: str):
     # Commenta questa riga se non vuoi log
-    print(f"[{time.strftime('%H:%M:%S')}] {msg}")
+    line = f"[{time.strftime('%H:%M:%S')}] {msg}"
+    try:
+        print(line)
+    except UnicodeEncodeError:
+        encoding = sys.stdout.encoding or "utf-8"
+        safe_line = line.encode(encoding, errors="replace").decode(encoding, errors="replace")
+        print(safe_line)
 
 
 def td_to_hours(td_series: pd.Series) -> float:
