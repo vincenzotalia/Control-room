@@ -1,0 +1,402 @@
+:root {
+  color-scheme: dark;
+  --bg-main: #050710;
+  --bg-panel: #0d101c;
+  --bg-card: #151827;
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.2);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-subtle: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+  color: var(--text-main);
+}
+
+.app-root {
+  display: flex;
+  height: 100vh;
+  background: transparent;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 220px;
+  padding: 16px 14px;
+  background: linear-gradient(to bottom, #020617, #020617e6);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 18px;
+}
+
+.menu-section {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.menu-item {
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.menu-item.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+.menu-item:hover {
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* MAIN PANEL */
+
+.main-panel {
+  flex: 1;
+  padding: 16px 22px;
+  background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.topbar p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.topbar-right .pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* BANNER */
+
+.info-banner {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 13px;
+}
+
+.info-banner.error {
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.5);
+}
+
+/* CARDS & KPI */
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: radial-gradient(circle at top, #111827, #020617 70%);
+  border-radius: 18px;
+  border: 1px solid var(--border-subtle);
+  padding: 12px 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpi-title {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.kpi-value {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.kpi-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* MIDDLE ROW */
+
+.middle-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+  gap: 12px;
+  flex: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card-header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* MAPPA */
+
+.map-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-container {
+  flex: 1;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.map-background {
+  fill: #020617;
+}
+
+.rack-rect {
+  fill: #1f2937;
+  stroke: rgba(148, 163, 184, 0.7);
+  stroke-width: 1;
+}
+
+.rack-label {
+  fill: var(--text-muted);
+  font-size: 9px;
+  text-anchor: middle;
+}
+
+/* OPERATORI */
+
+.operator-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.operator-list {
+  margin-top: 4px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.operator-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 6px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+.operator-row:nth-child(odd) {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.operator-row:nth-child(even) {
+  background: rgba(17, 24, 39, 0.85);
+}
+
+.operator-row:hover {
+  border-color: rgba(52, 211, 153, 0.5);
+}
+
+.operator-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0, #4ade80, #16a34a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #022c22;
+}
+
+.operator-name {
+  font-size: 13px;
+}
+
+.operator-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.operator-kpi {
+  text-align: right;
+}
+
+.operator-kpi-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.operator-kpi-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* PLACEHOLDER */
+
+.placeholder {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  width: 100%;
+}
+
+/* TOGGLE MAPPA */
+
+.map-mode-toggle {
+  display: flex;
+  gap: 6px;
+}
+
+.map-mode-button {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 4px 10px;
+  font-size: 11px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.map-mode-button.active {
+  background: var(--accent-soft);
+  border-color: rgba(52, 211, 153, 0.7);
+  color: var(--accent);
+}
+
+/* HEATMAP EFFECT */
+
+.rack-rect-heat {
+  stroke-width: 1.2;
+}
+
+@keyframes rackPulse {
+  0% {
+    stroke-width: 1.2;
+    stroke: rgba(52, 211, 153, 0.2);
+  }
+  50% {
+    stroke-width: 3;
+    stroke: rgba(52, 211, 153, 0.9);
+  }
+  100% {
+    stroke-width: 1.2;
+    stroke: rgba(52, 211, 153, 0.2);
+  }
+}
+
+.rack-rect-pulse {
+  animation: rackPulse 1.6s infinite;
+}
+/* --- Fix dimensioni mappa magazzino --- */
+
+/* Contenitore che ospita la mappa delle corsie (VerticalMap) */
+.map-container {
+  flex: 0 0 420px;          /* altezza “fissa” comoda per vedere tante corsie */
+  max-height: 420px;
+  overflow-y: auto;          /* se le corsie sono tante, compare la scrollbar verticale */
+  overflow-x: hidden;
+  padding-right: 4px;        /* piccolo spazio per la scrollbar */
+}
+
+
+/* L'SVG della mappa deve riempire il contenitore */
+.map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.logo {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
