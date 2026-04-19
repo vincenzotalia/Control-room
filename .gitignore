@@ -1,0 +1,19 @@
+# Frontend build/deps
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/npm
+
+# Backend local env/cache
+backend/.venv/
+backend/__pycache__/
+backend/data/input/.cache/
+
+# Local packaging artifacts
+.deploy-backend-demo/
+backend-demo.zip
+backend.zip
+
+# Python/Node generic
+*.pyc
+*.pyo
