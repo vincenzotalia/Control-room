@@ -19,6 +19,8 @@ import AreaManagerPage from "./components/AreaManagerPage.jsx";
 // ✅ NEW: distanza breakdown + confronto storico
 import DistBreakdownCard from "./components/DistBreakdownCard.jsx";
 
+const LOGIN_STORAGE_KEY = "control-room-demo-user";
+
 
 // ✅ Qui cambi le scritte che scorrono (non impatta performance)
 const TICKER_ITEMS = [
@@ -28,8 +30,20 @@ const TICKER_ITEMS = [
   "Promemoria: DPI obbligatori nelle aree operative",
 ];
 
+function readStoredUser() {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const rawUser = window.localStorage.getItem(LOGIN_STORAGE_KEY);
+    return rawUser ? JSON.parse(rawUser) : null;
+  } catch (error) {
+    console.warn("Impossibile leggere la sessione salvata", error);
+    return null;
+  }
+}
+
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => readStoredUser());
 
   const [kpi, setKpi] = useState(null);
   const [operators, setOperators] = useState([]);
@@ -108,6 +122,20 @@ function App() {
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      if (user) {
+        window.localStorage.setItem(LOGIN_STORAGE_KEY, JSON.stringify(user));
+      } else {
+        window.localStorage.removeItem(LOGIN_STORAGE_KEY);
+      }
+    } catch (error) {
+      console.warn("Impossibile aggiornare la sessione salvata", error);
+    }
+  }, [user]);
 
   const topOperators = useMemo(() => {
     return [...operators]
@@ -282,6 +310,14 @@ function App() {
           </div>
           <div className="topbar-right">
             <span className="pill">Oggi</span>
+            <button
+              type="button"
+              className="menu-item"
+              onClick={() => setUser(null)}
+              style={{ marginLeft: 12 }}
+            >
+              Esci
+            </button>
           </div>
         </header>
 
