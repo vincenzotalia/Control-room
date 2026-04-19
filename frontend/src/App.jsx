@@ -3,7 +3,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import "./styles.css";
 
 import LoginPage from "./components/LoginPage.jsx";
-import ForkliftPage from "./components/ForkliftPage.jsx";
+import ForkliftPage from "./components/ForkLiftPage.jsx";
 import UploadDataButton from "./components/UploadDataButton.jsx";
 
 import VerticalMap from "./VerticalMap";
